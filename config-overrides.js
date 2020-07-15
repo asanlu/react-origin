@@ -1,9 +1,9 @@
 const path = require('path');
+const { override, addDecoratorsLegacy, addBundleVisualizer, addWebpackAlias, addLessLoader } = require('customize-cra');
 
-module.exports = function override(config, env) {
-  config.resolve.alias = {
-    ...config.resolve.alias,
+module.exports = override(
+  addWebpackAlias({
     '@': path.resolve(__dirname, './src')
-  };
-  return config;
-}
+  }),
+  addLessLoader()
+);
